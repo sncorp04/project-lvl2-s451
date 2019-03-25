@@ -9,3 +9,4 @@
 </pre>
 <a href="https://asciinema.org/a/236378" target="_blank"><img src="https://asciinema.org/a/236378.svg" /></a>
 <a href="https://asciinema.org/a/236440" target="_blank"><img src="https://asciinema.org/a/236440.svg" /></a>
+<a href="https://asciinema.org/a/236468" target="_blank"><img src="https://asciinema.org/a/236468.svg" /></a>

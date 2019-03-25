@@ -1,5 +1,7 @@
 import fs from 'fs';
 import _ from 'lodash';
+import path from 'path';
+import parsers from './parsers';
 
 const diffActions = [
   {
@@ -20,7 +22,10 @@ const diffActions = [
   },
 ];
 
-const getDataFile = file => JSON.parse(fs.readFileSync(file));
+const getDataFile = (file) => {
+  const parse = parsers(path.extname(file));
+  return parse(fs.readFileSync(file, 'utf-8'));
+};
 
 export default (firstFile, secondFile) => {
   const dataOfFileOne = getDataFile(firstFile);
