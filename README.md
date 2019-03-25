@@ -7,4 +7,4 @@
   <code>$ npm install gendiff-sncorp
   </code>
 </pre>
-<a href="https://asciinema.org/a/230058" target="_blank"><img src="https://asciinema.org/a/230058.svg" /></a>
+<a href="https://asciinema.org/a/236378" target="_blank"><img src="https://asciinema.org/a/236378.svg" /></a>
