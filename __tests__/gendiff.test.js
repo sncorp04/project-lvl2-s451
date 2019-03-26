@@ -2,9 +2,12 @@ import fs from 'fs';
 import gendiff from '../src';
 
 test.each([
-  ['before.json', 'after.json', 'expected'],
-  ['before.yml', 'after.yml', 'expected'],
-  ['before.ini', 'after.ini', 'expected'],
+  ['beforeSimple.json', 'afterSimple.json', 'expectedSimple'],
+  ['beforeSimple.yml', 'afterSimple.yml', 'expectedSimple'],
+  ['beforeSimple.ini', 'afterSimple.ini', 'expectedSimple'],
+  ['beforeTree.json', 'afterTree.json', 'expectedTree'],
+  ['beforeTree.yml', 'afterTree.yml', 'expectedTree'],
+  ['beforeTree.ini', 'afterTree.ini', 'expectedTree'],
 ])(
   'gendiff(%s, %s)',
   (first, second, expected) => {
