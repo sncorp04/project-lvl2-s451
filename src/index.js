@@ -2,7 +2,7 @@ import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
 import getParse from './parsers';
-import render from './render';
+import render from './renderers/renderers';
 
 const diffActions = [
   {
@@ -42,7 +42,8 @@ const getItemAction = (firstObj, secondObj, key) => (
 
 const getDataFile = (pathToFile) => {
   const parse = getParse(path.extname(pathToFile));
-  return parse(fs.readFileSync(pathToFile, 'utf-8'));
+  const readfile = fs.readFileSync(pathToFile, 'utf-8');
+  return parse(readfile);
 };
 
 const buildAst = (firstData, secondData) => {
@@ -53,8 +54,9 @@ const buildAst = (firstData, secondData) => {
   }));
 };
 
-export default (firstFile, secondFile) => {
+export default (firstFile, secondFile, format) => {
   const dataFileOne = getDataFile(firstFile);
   const dataFileTwo = getDataFile(secondFile);
-  return render(buildAst(dataFileOne, dataFileTwo));
+  const ast = buildAst(dataFileOne, dataFileTwo);
+  return render[format](ast);
 };

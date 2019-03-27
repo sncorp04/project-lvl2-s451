@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 const getIndent = (depthLevel) => {
   const indent = 2;
   return ' '.repeat(depthLevel * indent);
@@ -17,12 +19,12 @@ const actions = {
   added: (data, depth) => `${getIndent(depth)}+ ${data.key}: ${stringify(data.value, depth)}`,
   deleted: (data, depth) => `${getIndent(depth)}- ${data.key}: ${stringify(data.value, depth)}`,
   unchanged: (data, depth) => `${getIndent(depth)}  ${data.key}: ${stringify(data.value, depth)}`,
-  changed: (data, depth) => `${getIndent(depth)}- ${data.key}: ${stringify(data.valueBefore, depth)}\n${getIndent(depth)}+ ${data.key}: ${stringify(data.valueAfter, depth)}`,
+  changed: (data, depth) => [`${getIndent(depth)}- ${data.key}: ${stringify(data.valueBefore, depth)}`, `${getIndent(depth)}+ ${data.key}: ${stringify(data.valueAfter, depth)}`],
 };
 
 const render = (data) => {
   const renderAst = (ast, depthLevel = 1) => (
-    ast.map(item => actions[item.type](item, depthLevel, renderAst))
+    _.flatten(ast.map(item => actions[item.type](item, depthLevel, renderAst)))
       .join('\n')
   );
   return `{\n${renderAst(data)}\n}`;
