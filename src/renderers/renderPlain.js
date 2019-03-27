@@ -2,10 +2,6 @@ const stringify = (value) => {
   if (value instanceof Object) {
     return '[complex value]';
   }
-  const numValue = Number(value);
-  if (!Number.isNaN(numValue) && typeof value !== 'boolean') {
-    return numValue;
-  }
   if (typeof value === 'string') {
     return `'${value}'`;
   }
