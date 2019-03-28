@@ -53,9 +53,9 @@ const buildAst = (firstData, secondData) => {
   }));
 };
 
-export default (firstFile, secondFile, format) => {
-  const dataFileOne = getDataFile(firstFile);
-  const dataFileTwo = getDataFile(secondFile);
+export default (firstPathToFile, secondPathToFile, format) => {
+  const dataFileOne = getDataFile(firstPathToFile);
+  const dataFileTwo = getDataFile(secondPathToFile);
   const ast = buildAst(dataFileOne, dataFileTwo);
   return render[format](ast);
 };

@@ -14,7 +14,6 @@ test.each([
   ['beforeTree.json', 'afterTree.json', 'expectedTreePlain', 'plain'],
   ['beforeTree.yml', 'afterTree.yml', 'expectedTreePlain', 'plain'],
   ['beforeTree.ini', 'afterTree.ini', 'expectedTreePlain', 'plain'],
-
 ])(
   'gendiff(%s, %s)',
   (first, second, expected, format = 'ordinary') => {
