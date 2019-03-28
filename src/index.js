@@ -1,7 +1,7 @@
 import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
-import getParse from './parsers';
+import parse from './parsers';
 import render from './renderers';
 
 const diffActions = [
@@ -41,9 +41,8 @@ const getItemAction = (firstObj, secondObj, key) => (
 );
 
 const getDataFile = (pathToFile) => {
-  const parse = getParse(path.extname(pathToFile));
   const readfile = fs.readFileSync(pathToFile, 'utf-8');
-  return parse(readfile);
+  return parse[path.extname(pathToFile)](readfile);
 };
 
 const buildAst = (firstData, secondData) => {
