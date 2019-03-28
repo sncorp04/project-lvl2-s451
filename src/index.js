@@ -2,7 +2,7 @@ import fs from 'fs';
 import _ from 'lodash';
 import path from 'path';
 import getParse from './parsers';
-import render from './renderers/renderers';
+import render from './renderers';
 
 const diffActions = [
   {

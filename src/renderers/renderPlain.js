@@ -8,18 +8,19 @@ const stringify = (value) => {
   return value;
 };
 
-const genDot = level => (level ? '.' : '');
+const buildPath = (path, level) => ([...path.split(), level].filter(e => e).join('.'));
+
 const actions = {
-  parent: (data, nameLevel, func) => func(data.children, `${nameLevel}${genDot(nameLevel)}${data.key}`),
-  added: (data, nameLevel) => `Property '${nameLevel}${genDot(nameLevel)}${data.key}' was added with value ${stringify(data.value)}`,
-  deleted: (data, nameLevel) => `Property '${nameLevel}${genDot(nameLevel)}${data.key}' was removed`,
+  parent: (data, path, func) => func(data.children, buildPath(path, data.key)),
+  added: (data, path) => `Property '${buildPath(path, data.key)}' was added with value ${stringify(data.value)}`,
+  deleted: (data, path) => `Property '${buildPath(path, data.key)}' was removed`,
   unchanged: () => '',
-  changed: (data, nameLevel) => `Property '${nameLevel}${genDot(nameLevel)}${data.key}' was updated. From ${stringify(data.valueBefore)} to ${stringify(data.valueAfter)}`,
+  changed: (data, path) => `Property '${buildPath(path, data.key)}' was updated. From ${stringify(data.valueBefore)} to ${stringify(data.valueAfter)}`,
 };
 
 const render = (data) => {
-  const renderAst = (ast, nameLevel = '') => (
-    ast.map(item => actions[item.type](item, nameLevel, renderAst))
+  const renderAst = (ast, path = '') => (
+    ast.map(item => actions[item.type](item, path, renderAst))
       .filter(el => el)
       .join('\n')
   );
