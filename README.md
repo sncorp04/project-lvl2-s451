@@ -9,7 +9,7 @@ Compares two configuration files and shows a difference.
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/87251e35f22c283c8703/maintainability)](https://codeclimate.com/github/sncorp04/project-lvl2-s451/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/87251e35f22c283c8703/test_coverage)](https://codeclimate.com/github/sncorp04/project-lvl2-s451/test_coverage)
-[![Build Status](https://travis-ci.org/sncorp04/project-lvl2-s451.svg?branch=master)]((https://travis-ci.org/sncorp04/project-lvl2-s451)
+[![Build Status](https://travis-ci.org/sncorp04/project-lvl2-s451.svg?branch=master)](https://travis-ci.org/sncorp04/project-lvl2-s451)
 
 ## Installation
 
